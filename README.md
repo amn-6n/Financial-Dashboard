@@ -11,6 +11,10 @@ Modern finance dashboard built with React, Redux Toolkit, Supabase, and shadcn/u
 - Provides insights page summaries and analysis
 - Works across desktop and mobile
 
+## Live Demo
+
+[View the live app](https://financial-dashboard-6g7b.onrender.com/)
+
 ## Tech Stack
 
 - React 19
