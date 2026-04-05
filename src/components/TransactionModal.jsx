@@ -105,6 +105,7 @@ export function TransactionModal({
                 type="number"
                 step="0.01"
                 min="0"
+                placeholder="0.0"
                 value={formData.amount || ""}
                 onChange={(e) =>
                   setFormData({
