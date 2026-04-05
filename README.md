@@ -11,13 +11,6 @@ Modern finance dashboard built with React, Redux Toolkit, Supabase, and shadcn/u
 - Provides insights page summaries and analysis
 - Works across desktop and mobile
 
-## Recent UI Updates
-
-- Glassmorphism styling across core surfaces (cards, navbar, sidebar, dialogs/sheets)
-- Improved dark/light navigation visual consistency
-- Mobile sidebar with working trigger and accessible sheet semantics
-- Cleaner role toggle behavior and improved interaction styling
-
 ## Tech Stack
 
 - React 19
@@ -26,8 +19,6 @@ Modern finance dashboard built with React, Redux Toolkit, Supabase, and shadcn/u
 - Redux Toolkit + React Redux
 - Supabase JS
 - Recharts
-- GSAP
-- Sonner
 
 ## Scripts
 
