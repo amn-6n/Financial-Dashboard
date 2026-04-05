@@ -89,10 +89,10 @@ export function CategoryChart({ transactions }) {
         </CardDescription>
       </CardHeader>
 
-      <CardContent>
+      <CardContent className="space-y-4">
         <ChartContainer
           config={chartConfig}
-          className="h-[250px] w-full sm:h-[300px]"
+          className="mx-auto h-[260px] w-full sm:h-[300px] md:h-[340px]"
         >
           <PieChart accessibilityLayer>
             <ChartTooltip
@@ -104,8 +104,8 @@ export function CategoryChart({ transactions }) {
               dataKey="amount"
               nameKey="category"
               cx="50%"
-              cy="50%"
-              outerRadius={100}
+              cy="48%"
+              outerRadius={80}
               label={false}
               labelLine={false}
             >
@@ -113,16 +113,25 @@ export function CategoryChart({ transactions }) {
                 <Cell key={`cell-${index}`} fill={pieFillColor} />
               ))}
             </Pie>
-
-            <ChartLegend
-              content={
-                <ChartLegendContent className="flex-wrap px-2 text-foreground" />
-              }
-            />
           </PieChart>
         </ChartContainer>
 
-        <div className="mt-4 text-center text-sm text-foreground">
+        <div className="flex flex-wrap justify-center gap-3 px-2">
+          {chartData.map((item) => (
+            <div
+              key={item.category}
+              className="flex items-center gap-2 text-xs sm:text-sm"
+            >
+              <span
+                className="inline-block size-3 rounded-sm"
+                style={{ backgroundColor: item.fill }}
+              />
+              <span className="text-foreground">{item.category}</span>
+            </div>
+          ))}
+        </div>
+
+        <div className="text-center text-sm text-foreground">
           Total Expenses:{" "}
           <span className="font-semibold text-foreground">
             ${totalExpenses.toFixed(2)}
