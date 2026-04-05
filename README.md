@@ -1,16 +1,113 @@
-# React + Vite
+# Finance Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Modern finance dashboard built with React, Redux Toolkit, Supabase, and shadcn/ui.
 
-Currently, two official plugins are available:
+## What This App Does
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Tracks income and expenses from a Supabase-backed `transactions` table
+- Shows dashboard metrics and charts (balance trend + category breakdown)
+- Supports transaction CRUD (admin) and read-only mode (viewer)
+- Includes filters, sorting, and search for transaction management
+- Provides insights page summaries and analysis
+- Works across desktop and mobile
 
-## React Compiler
+## Recent UI Updates
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Glassmorphism styling across core surfaces (cards, navbar, sidebar, dialogs/sheets)
+- Improved dark/light navigation visual consistency
+- Mobile sidebar with working trigger and accessible sheet semantics
+- Cleaner role toggle behavior and improved interaction styling
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- React 19
+- Vite 8
+- Tailwind CSS v4 + shadcn/ui primitives
+- Redux Toolkit + React Redux
+- Supabase JS
+- Recharts
+- GSAP
+- Sonner
+
+## Scripts
+
+```bash
+npm run dev      # start dev server
+npm run build    # production build
+npm run preview  # preview production build
+npm run lint     # lint project
+```
+
+## Local Setup
+
+1. Install dependencies:
+
+```bash
+npm install
+```
+
+2. Configure Supabase environment variables in `.env`.
+
+3. Run the app:
+
+```bash
+npm run dev
+```
+
+## Role Behavior
+
+- `admin`: can add, edit, and delete transactions
+- `viewer`: read-only access
+
+Role can be changed from the UI selector.
+
+## Core Structure
+
+```text
+src/
+  components/
+    AppSidebar.jsx
+    Navbar.jsx
+    SummaryCard.jsx
+    BalanceChart.jsx
+    CategoryChart.jsx
+    Filters.jsx
+    TransactionTable.jsx
+    TransactionModal.jsx
+    ui/
+  pages/
+    Dashboard.jsx
+    Transactions.jsx
+    Insights.jsx
+  redux/
+    store.jsx
+    hooks.jsx
+    transactionsSlice.jsx
+    filtersSlice.jsx
+    userRoleSlice.jsx
+  lib/
+    supabase.jsx
+  utils/
+  index.css
+```
+
+## Data Model
+
+Main table: `transactions`
+
+- `id` (uuid)
+- `date` (date)
+- `amount` (numeric)
+- `category` (text)
+- `type` (`income` | `expense`)
+- `description` (text, optional)
+- `created_at`, `updated_at` (timestamp)
+
+## Notes
+
+- Theme is controlled by the app theme provider (`light`, `dark`, `system`)
+- Most UI styling tokens and glass effects are centralized in `src/index.css`
+
+## License
+
+MIT
