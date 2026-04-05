@@ -42,24 +42,27 @@ export function SummaryCard({ title, amount, type, trend }) {
   return (
     <Card>
       <CardHeader className="flex flex-row items-center justify-between pb-2">
-        <CardTitle className="text-muted-foreground text-sm font-medium">
+        <CardTitle className="text-xs font-medium text-muted-foreground sm:text-sm">
           {title}
         </CardTitle>
 
-        <div className="bg-muted flex size-9 items-center justify-center rounded-lg">
+        <div className="flex size-8 items-center justify-center rounded-lg bg-muted sm:size-9">
           {getIcon()}
         </div>
       </CardHeader>
 
       <CardContent>
         <div
-          className={cn("text-3xl font-bold tracking-tight", getAmountColor())}
+          className={cn(
+            "text-2xl font-bold tracking-tight sm:text-3xl",
+            getAmountColor(),
+          )}
         >
           {formatCurrency(amount)}
         </div>
 
         {trend && (
-          <p className="text-muted-foreground mt-2 flex items-center gap-1 text-xs">
+          <p className="mt-2 flex items-center gap-1 text-xs text-muted-foreground">
             {trend.isPositive ? (
               <ArrowUpIcon className="size-3 text-green-600 dark:text-green-400" />
             ) : (

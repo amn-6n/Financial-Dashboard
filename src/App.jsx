@@ -1,12 +1,12 @@
 "use client";
 
-import React from "react";
+import React, { Suspense } from "react";
 import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar";
 import { Navbar } from "@/components/Navbar";
 import { AppSidebar } from "@/components/AppSidebar";
-import { Dashboard } from "@/pages/Dashboard";
-import { Transactions } from "@/pages/Transactions";
-import { Insights } from "@/pages/Insights";
+const Dashboard = React.lazy(() => import("@/pages/Dashboard"));
+const Transactions = React.lazy(() => import("@/pages/Transactions"));
+const Insights = React.lazy(() => import("@/pages/Insights"));
 
 import { useAppDispatch } from "@/redux/hooks";
 import {
@@ -72,22 +72,44 @@ export function App() {
   const renderContent = () => {
     switch (activeView) {
       case "dashboard":
-        return <Dashboard />;
+        return (
+          <Suspense fallback={<PageLoader />}>
+            <Dashboard />
+          </Suspense>
+        );
       case "transactions":
-        return <Transactions />;
+        return (
+          <Suspense fallback={<PageLoader />}>
+            <Transactions />
+          </Suspense>
+        );
       case "insights":
-        return <Insights />;
+        return (
+          <Suspense fallback={<PageLoader />}>
+            <Insights />
+          </Suspense>
+        );
       default:
-        return <Dashboard />;
+        return (
+          <Suspense fallback={<PageLoader />}>
+            <Dashboard />
+          </Suspense>
+        );
     }
   };
 
+  const PageLoader = () => (
+    <div className="flex items-center justify-center py-12">
+      <Spinner className="size-6" />
+    </div>
+  );
+
   if (loading) {
     return (
-      <div className="bg-background flex min-h-svh items-center justify-center">
+      <div className="flex min-h-svh items-center justify-center bg-background">
         <div className="flex flex-col items-center gap-4">
           <Spinner className="size-8" />
-          <p className="text-muted-foreground text-sm">
+          <p className="text-sm text-muted-foreground">
             Loading your financial data...
           </p>
         </div>
@@ -97,13 +119,13 @@ export function App() {
 
   return (
     <SidebarProvider>
-      <div className="bg-background flex min-h-svh w-full">
+      <div className="flex min-h-svh w-full bg-background">
         <AppSidebar activeView={activeView} onViewChange={setActiveView} />
 
         <SidebarInset className="flex flex-1 flex-col">
           <Navbar />
 
-          <main className="flex-1 p-6">
+          <main className="flex-1 p-3 sm:p-4 md:p-6">
             <div ref={contentRef}>{renderContent()}</div>
           </main>
         </SidebarInset>

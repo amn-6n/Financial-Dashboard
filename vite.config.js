@@ -11,4 +11,35 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          // Split vendor libraries into separate chunks
+          if (id.includes("node_modules/recharts")) {
+            return "recharts";
+          }
+          if (id.includes("node_modules/@radix-ui")) {
+            return "radixui";
+          }
+          if (
+            id.includes("node_modules/@hookform") ||
+            id.includes("node_modules/react-hook-form")
+          ) {
+            return "hooks";
+          }
+          if (id.includes("node_modules/@supabase")) {
+            return "supabase";
+          }
+          if (
+            id.includes("node_modules/gsap") ||
+            id.includes("node_modules/embla-carousel")
+          ) {
+            return "animations";
+          }
+        },
+      },
+    },
+    chunkSizeWarningLimit: 600,
+  },
 });

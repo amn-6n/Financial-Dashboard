@@ -9,10 +9,12 @@ export function Insights() {
   );
 
   return (
-    <div className="space-y-6">
-      <div>
-        <h2 className="text-3xl font-bold tracking-tight">Insights</h2>
-        <p className="text-muted-foreground">
+    <div className="space-y-4 sm:space-y-6">
+      <div className="px-2 sm:px-0">
+        <h2 className="text-2xl font-bold tracking-tight sm:text-3xl md:text-4xl">
+          Insights
+        </h2>
+        <p className="text-sm text-muted-foreground sm:text-base">
           Discover patterns and trends in your spending
         </p>
       </div>
@@ -21,3 +23,5 @@ export function Insights() {
     </div>
   );
 }
+
+export default Insights;

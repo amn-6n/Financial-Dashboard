@@ -81,12 +81,19 @@ export function CategoryChart({ transactions }) {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Spending by Category</CardTitle>
-        <CardDescription>Top categories by expense amount</CardDescription>
+        <CardTitle className="text-lg sm:text-xl">
+          Spending by Category
+        </CardTitle>
+        <CardDescription className="text-xs sm:text-sm">
+          Top categories by expense amount
+        </CardDescription>
       </CardHeader>
 
       <CardContent>
-        <ChartContainer config={chartConfig} className="h-[300px] w-full">
+        <ChartContainer
+          config={chartConfig}
+          className="h-[250px] w-full sm:h-[300px]"
+        >
           <PieChart accessibilityLayer>
             <ChartTooltip
               content={<ChartTooltipContent nameKey="category" />}

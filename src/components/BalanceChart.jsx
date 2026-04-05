@@ -52,12 +52,17 @@ export function BalanceChart({ transactions }) {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Balance Trend</CardTitle>
-        <CardDescription>Your account balance over time</CardDescription>
+        <CardTitle className="text-lg sm:text-xl">Balance Trend</CardTitle>
+        <CardDescription className="text-xs sm:text-sm">
+          Your account balance over time
+        </CardDescription>
       </CardHeader>
 
       <CardContent>
-        <ChartContainer config={chartConfig} className="h-[300px] w-full">
+        <ChartContainer
+          config={chartConfig}
+          className="h-[250px] w-full sm:h-[300px]"
+        >
           <LineChart data={chartData} accessibilityLayer>
             <CartesianGrid strokeDasharray="3 3" vertical={false} />
 

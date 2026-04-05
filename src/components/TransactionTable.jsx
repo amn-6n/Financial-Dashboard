@@ -27,20 +27,22 @@ export function TransactionTable({ transactions, onEdit, onDelete, onAdd }) {
 
   return (
     <Card>
-      <CardHeader className="flex flex-row items-center justify-between">
-        <CardTitle>Recent Transactions</CardTitle>
+      <CardHeader className="flex flex-col items-start justify-between gap-3 sm:flex-row sm:items-center sm:gap-0">
+        <CardTitle className="text-lg sm:text-xl">
+          Recent Transactions
+        </CardTitle>
 
         {isAdmin && (
-          <Button onClick={onAdd} size="sm">
-            <PlusIcon />
+          <Button onClick={onAdd} size="sm" className="w-full sm:w-auto">
+            <PlusIcon className="size-4" />
             Add Transaction
           </Button>
         )}
       </CardHeader>
 
       <CardContent>
-        <div className="rounded-md border">
-          <Table>
+        <div className="overflow-x-auto rounded-md border">
+          <Table className="text-sm sm:text-base">
             <TableHeader>
               <TableRow>
                 <TableHead>Date</TableHead>
@@ -59,7 +61,7 @@ export function TransactionTable({ transactions, onEdit, onDelete, onAdd }) {
                 <TableRow>
                   <TableCell
                     colSpan={isAdmin ? 6 : 5}
-                    className="text-muted-foreground h-24 text-center"
+                    className="h-24 text-center text-muted-foreground"
                   >
                     No transactions found
                   </TableCell>
