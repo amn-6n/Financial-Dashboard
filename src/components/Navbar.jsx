@@ -39,11 +39,11 @@ export function Navbar() {
         <div className="flex items-center gap-2 sm:gap-3">
           <SidebarTrigger className="md:hidden" />
 
-          <div className="md:hidden">
+          <div className="lg:hidden">
             <ModeToggle />
           </div>
 
-          <div className="hidden items-center gap-4 md:flex">
+          <div className="hidden items-center gap-4 lg:flex">
             <div className="flex items-center gap-2">
               <User2Icon className="size-4 text-muted-foreground" />
 

@@ -23,11 +23,13 @@ import {
   SidebarMenu,
   SidebarMenuItem,
   SidebarMenuButton,
+  useSidebar,
 } from "@/components/ui/sidebar";
 
 export function AppSidebar({ activeView, onViewChange }) {
   const dispatch = useAppDispatch();
   const userRole = useAppSelector((state) => state.userRole.role);
+  const { isMobile, setOpenMobile } = useSidebar();
 
   const menuItems = [
     {
@@ -58,7 +60,18 @@ export function AppSidebar({ activeView, onViewChange }) {
                 <SidebarMenuItem key={item.value}>
                   <SidebarMenuButton
                     isActive={activeView === item.value}
-                    onClick={() => onViewChange(item.value)}
+                    className={
+                      isMobile
+                        ? "justify-start [&>span:last-child]:inline-flex"
+                        : undefined
+                    }
+                    onClick={() => {
+                      onViewChange(item.value);
+
+                      if (isMobile) {
+                        setOpenMobile(false);
+                      }
+                    }}
                   >
                     <item.icon />
                     <span>{item.title}</span>
@@ -69,7 +82,7 @@ export function AppSidebar({ activeView, onViewChange }) {
           </SidebarGroupContent>
         </SidebarGroup>
 
-        <SidebarGroup className="mt-auto md:hidden">
+        <SidebarGroup className="mt-auto lg:hidden">
           <SidebarGroupLabel>Account</SidebarGroupLabel>
           <SidebarGroupContent>
             <div className="space-y-3 px-2 py-1">
