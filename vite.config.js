@@ -12,6 +12,8 @@ export default defineConfig({
     },
   },
   build: {
+    // Preserve authored CSS declarations to avoid backdrop-filter regressions in prod.
+    cssMinify: false,
     rollupOptions: {
       output: {
         manualChunks(id) {

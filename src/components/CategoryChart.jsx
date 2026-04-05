@@ -90,6 +90,7 @@ export function CategoryChart({ transactions }) {
       </CardHeader>
 
       <CardContent className="space-y-4">
+        phonne{" "}
         <ChartContainer
           config={chartConfig}
           className="mx-auto h-[260px] w-full sm:h-[300px] md:h-[340px]"
@@ -115,7 +116,6 @@ export function CategoryChart({ transactions }) {
             </Pie>
           </PieChart>
         </ChartContainer>
-
         <div className="flex flex-wrap justify-center gap-3 px-2">
           {chartData.map((item) => (
             <div
@@ -130,7 +130,6 @@ export function CategoryChart({ transactions }) {
             </div>
           ))}
         </div>
-
         <div className="text-center text-sm text-foreground">
           Total Expenses:{" "}
           <span className="font-semibold text-foreground">

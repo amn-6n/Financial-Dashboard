@@ -147,7 +147,7 @@ const Sidebar = React.forwardRef(
       return (
         <div
           className={cn(
-            "glass-sidebar glass-panel-edge flex h-full w-[var(--sidebar-width)] flex-col text-sidebar-foreground",
+            "glass-sidebar glass-panel-edge flex h-full w-[var(--sidebar-width)] flex-col text-sidebar-foreground backdrop-blur-md backdrop-saturate-150 backdrop-filter",
             className,
           )}
           ref={ref}
@@ -163,7 +163,7 @@ const Sidebar = React.forwardRef(
         <Sheet open={openMobile} onOpenChange={setOpenMobile}>
           <SheetContent
             side={side}
-            className="glass-sidebar glass-panel-edge w-[var(--sidebar-width-mobile)] p-0 text-sidebar-foreground"
+            className="glass-sidebar glass-panel-edge w-[var(--sidebar-width-mobile)] p-0 text-sidebar-foreground backdrop-blur-md backdrop-saturate-150 backdrop-filter"
             data-sidebar="mobile"
           >
             <SheetHeader className="sr-only">
@@ -182,7 +182,7 @@ const Sidebar = React.forwardRef(
     return (
       <div
         ref={ref}
-        className="glass-sidebar glass-panel-edge group/sidebar-wrapper relative inline-flex h-svh w-[var(--sidebar-width)] shrink-0 flex-col border-r text-sidebar-foreground md:sticky md:top-0 md:self-start"
+        className="glass-sidebar glass-panel-edge group/sidebar-wrapper relative inline-flex h-svh w-[var(--sidebar-width)] shrink-0 flex-col border-r text-sidebar-foreground backdrop-blur-md backdrop-saturate-150 backdrop-filter md:sticky md:top-0 md:self-start"
         data-state={state}
         data-collapsible={collapsible}
         data-variant={variant}
@@ -342,7 +342,7 @@ const SidebarMenuItem = React.forwardRef(({ className, ...props }, ref) => (
 SidebarMenuItem.displayName = "SidebarMenuItem";
 
 const sidebarMenuButtonVariants = cva(
-  "glass-nav-item peer/menu-button flex w-full items-center gap-2 overflow-hidden rounded-md px-2 py-1.5 text-sm font-medium text-sidebar-foreground/92 outline-none ring-sidebar-ring transition-all hover:bg-sidebar-accent/70 hover:text-sidebar-accent-foreground active:bg-sidebar-accent active:text-sidebar-accent-foreground data-[active=true]:glass-nav-item-active data-[active=true]:text-black dark:data-[active=true]:text-white disabled:pointer-events-none disabled:opacity-50 group-data-[state=collapsed]/sidebar-wrapper:justify-center group-data-[state=collapsed]/sidebar-wrapper:p-0 group-data-[state=collapsed]/sidebar-wrapper:[&>span:last-child]:hidden [&>svg]:size-4 [&>svg]:shrink-0",
+  "glass-nav-item backdrop-filter backdrop-blur-sm backdrop-saturate-150 peer/menu-button flex w-full items-center gap-2 overflow-hidden rounded-md px-2 py-1.5 text-sm font-medium text-sidebar-foreground/92 outline-none ring-sidebar-ring transition-all hover:bg-sidebar-accent/70 hover:text-sidebar-accent-foreground active:bg-sidebar-accent active:text-sidebar-accent-foreground data-[active=true]:glass-nav-item-active data-[active=true]:text-black dark:data-[active=true]:text-white disabled:pointer-events-none disabled:opacity-50 group-data-[state=collapsed]/sidebar-wrapper:justify-center group-data-[state=collapsed]/sidebar-wrapper:p-0 group-data-[state=collapsed]/sidebar-wrapper:[&>span:last-child]:hidden [&>svg]:size-4 [&>svg]:shrink-0",
   {
     variants: {
       variant: {

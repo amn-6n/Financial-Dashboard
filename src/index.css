@@ -182,6 +182,16 @@
     -webkit-backdrop-filter: blur(14px) saturate(140%);
   }
 
+  @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .glass-surface {
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    .dark .glass-surface {
+      background: rgba(15, 23, 42, 0.72);
+    }
+  }
+
   .glass-nav {
     background: color-mix(in oklab, var(--glass-bg) 88%, transparent);
     border-bottom: 1px solid var(--glass-border);
@@ -190,12 +200,32 @@
     box-shadow: 0 6px 18px rgba(15, 23, 42, 0.08);
   }
 
+  @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .glass-nav {
+      background: rgba(255, 255, 255, 0.92);
+    }
+
+    .dark .glass-nav {
+      background: rgba(15, 23, 42, 0.82);
+    }
+  }
+
   .glass-sidebar {
     background: color-mix(in oklab, var(--glass-bg) 82%, transparent);
     border-color: var(--glass-border);
     box-shadow: var(--glass-shadow);
     backdrop-filter: blur(12px) saturate(135%);
     -webkit-backdrop-filter: blur(12px) saturate(135%);
+  }
+
+  @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .glass-sidebar {
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    .dark .glass-sidebar {
+      background: rgba(15, 23, 42, 0.76);
+    }
   }
 
   .glass-nav-item {

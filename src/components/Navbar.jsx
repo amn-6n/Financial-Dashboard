@@ -19,7 +19,7 @@ export function Navbar() {
   const userRole = useAppSelector((state) => state.userRole.role);
 
   return (
-    <nav className="glass-nav sticky top-0 z-50 w-full">
+    <nav className="glass-nav sticky top-0 z-50 w-full backdrop-blur-md backdrop-saturate-150 backdrop-filter">
       <div className="flex h-14 items-center justify-between px-3 sm:h-16 sm:px-6">
         <div className="flex min-w-0 items-center gap-2 sm:gap-3">
           <div className="flex size-9 flex-shrink-0 items-center justify-center rounded-lg bg-primary text-primary-foreground sm:size-10">
