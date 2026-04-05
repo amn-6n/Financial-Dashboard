@@ -2,8 +2,17 @@ import {
   LayoutDashboard as LayoutDashboardIcon,
   ReceiptText as ReceiptTextIcon,
   TrendingUp as TrendingUpIcon,
-  Settings as SettingsIcon,
+  User as User2Icon,
 } from "lucide-react";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { setUserRole } from "@/redux/userRoleSlice";
 
 import {
   Sidebar,
@@ -17,6 +26,9 @@ import {
 } from "@/components/ui/sidebar";
 
 export function AppSidebar({ activeView, onViewChange }) {
+  const dispatch = useAppDispatch();
+  const userRole = useAppSelector((state) => state.userRole.role);
+
   const menuItems = [
     {
       title: "Dashboard",
@@ -57,17 +69,27 @@ export function AppSidebar({ activeView, onViewChange }) {
           </SidebarGroupContent>
         </SidebarGroup>
 
-        <SidebarGroup>
-          <SidebarGroupLabel>Other</SidebarGroupLabel>
+        <SidebarGroup className="mt-auto md:hidden">
+          <SidebarGroupLabel>Account</SidebarGroupLabel>
           <SidebarGroupContent>
-            <SidebarMenu>
-              <SidebarMenuItem>
-                <SidebarMenuButton>
-                  <SettingsIcon />
-                  <span>Settings</span>
-                </SidebarMenuButton>
-              </SidebarMenuItem>
-            </SidebarMenu>
+            <div className="space-y-3 px-2 py-1">
+              <div className="flex items-center gap-2">
+                <User2Icon className="size-4 text-muted-foreground" />
+                <Select
+                  value={userRole}
+                  onValueChange={(value) => dispatch(setUserRole(value))}
+                >
+                  <SelectTrigger className="w-full">
+                    <SelectValue />
+                  </SelectTrigger>
+
+                  <SelectContent>
+                    <SelectItem value="viewer">Viewer</SelectItem>
+                    <SelectItem value="admin">Admin</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+            </div>
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>

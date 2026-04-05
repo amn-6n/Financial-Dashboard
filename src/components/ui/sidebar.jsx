@@ -166,6 +166,13 @@ const Sidebar = React.forwardRef(
             className="w-[var(--sidebar-width-mobile)] bg-sidebar p-0 text-sidebar-foreground"
             data-sidebar="mobile"
           >
+            <SheetHeader className="sr-only">
+              <SheetTitle>Navigation Menu</SheetTitle>
+              <SheetDescription>
+                Use this menu to navigate dashboard sections and account
+                controls.
+              </SheetDescription>
+            </SheetHeader>
             <div className="flex h-full w-full flex-col">{children}</div>
           </SheetContent>
         </Sheet>
@@ -175,7 +182,7 @@ const Sidebar = React.forwardRef(
     return (
       <div
         ref={ref}
-        className="group/sidebar-wrapper relative inline-flex h-svh w-[var(--sidebar-width)] flex-col border-r bg-sidebar text-sidebar-foreground"
+        className="group/sidebar-wrapper relative inline-flex h-svh w-[var(--sidebar-width)] shrink-0 flex-col border-r bg-sidebar text-sidebar-foreground md:sticky md:top-0 md:self-start"
         data-state={state}
         data-collapsible={collapsible}
         data-variant={variant}
@@ -189,19 +196,29 @@ const Sidebar = React.forwardRef(
 );
 Sidebar.displayName = "Sidebar";
 
-const SidebarTrigger = React.forwardRef(({ className, ...props }, ref) => (
-  <Button
-    ref={ref}
-    data-sidebar="trigger"
-    variant="ghost"
-    size="icon"
-    className={cn("h-7 w-7", className)}
-    {...props}
-  >
-    <PanelLeftIcon />
-    <span className="sr-only">Toggle Sidebar</span>
-  </Button>
-));
+const SidebarTrigger = React.forwardRef(
+  ({ className, onClick, ...props }, ref) => {
+    const { toggleSidebar } = useSidebar();
+
+    return (
+      <Button
+        ref={ref}
+        data-sidebar="trigger"
+        variant="outline"
+        size="icon"
+        className={cn(className)}
+        onClick={(event) => {
+          onClick?.(event);
+          toggleSidebar();
+        }}
+        {...props}
+      >
+        <PanelLeftIcon />
+        <span className="sr-only">Toggle Sidebar</span>
+      </Button>
+    );
+  },
+);
 SidebarTrigger.displayName = "SidebarTrigger";
 
 const SidebarRail = React.forwardRef(({ className, ...props }, ref) => (

@@ -6,6 +6,7 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
+  DialogDescription,
   DialogFooter,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
@@ -68,6 +69,9 @@ export function TransactionModal({
           <DialogTitle>
             {mode === "add" ? "Add Transaction" : "Edit Transaction"}
           </DialogTitle>
+          <DialogDescription>
+            Fill in the transaction details and save your changes.
+          </DialogDescription>
         </DialogHeader>
 
         <form onSubmit={handleSubmit}>

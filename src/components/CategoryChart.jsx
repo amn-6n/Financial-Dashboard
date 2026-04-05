@@ -16,10 +16,35 @@ import {
   ChartLegendContent,
 } from "@/components/ui/chart";
 import { PieChart, Pie, Cell } from "recharts";
+import { useTheme } from "@/components/theme-provider";
 
 import { getCategoryColor } from "@/utils/categories";
 
 export function CategoryChart({ transactions }) {
+  const { theme } = useTheme();
+  const [resolvedTheme, setResolvedTheme] = React.useState("light");
+
+  React.useEffect(() => {
+    if (theme !== "system") {
+      setResolvedTheme(theme);
+      return;
+    }
+
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    const applySystemTheme = () => {
+      setResolvedTheme(mediaQuery.matches ? "dark" : "light");
+    };
+
+    applySystemTheme();
+    mediaQuery.addEventListener("change", applySystemTheme);
+
+    return () => {
+      mediaQuery.removeEventListener("change", applySystemTheme);
+    };
+  }, [theme]);
+
+  const pieFillColor = resolvedTheme === "dark" ? "#ffffff" : "#111111";
+
   const chartData = React.useMemo(() => {
     const expensesByCategory = {};
 
@@ -78,7 +103,7 @@ export function CategoryChart({ transactions }) {
               labelLine={false}
             >
               {chartData.map((entry, index) => (
-                <Cell key={`cell-${index}`} fill={entry.fill} />
+                <Cell key={`cell-${index}`} fill={pieFillColor} />
               ))}
             </Pie>
 
