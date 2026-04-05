@@ -13,7 +13,7 @@ Modern finance dashboard built with React, Redux Toolkit, Supabase, and shadcn/u
 
 ## Live Demo
 
-[View the live app](https://financial-dashboard-6g7b.onrender.com/)
+👉👉[View the live app](https://financial-dashboard-6g7b.onrender.com/)
 
 ## Tech Stack
 
