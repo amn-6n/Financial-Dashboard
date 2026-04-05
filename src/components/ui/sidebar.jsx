@@ -147,7 +147,7 @@ const Sidebar = React.forwardRef(
       return (
         <div
           className={cn(
-            "flex h-full w-[var(--sidebar-width)] flex-col bg-sidebar text-sidebar-foreground",
+            "glass-sidebar glass-panel-edge flex h-full w-[var(--sidebar-width)] flex-col text-sidebar-foreground",
             className,
           )}
           ref={ref}
@@ -163,7 +163,7 @@ const Sidebar = React.forwardRef(
         <Sheet open={openMobile} onOpenChange={setOpenMobile}>
           <SheetContent
             side={side}
-            className="w-[var(--sidebar-width-mobile)] bg-sidebar p-0 text-sidebar-foreground"
+            className="glass-sidebar glass-panel-edge w-[var(--sidebar-width-mobile)] p-0 text-sidebar-foreground"
             data-sidebar="mobile"
           >
             <SheetHeader className="sr-only">
@@ -182,7 +182,7 @@ const Sidebar = React.forwardRef(
     return (
       <div
         ref={ref}
-        className="group/sidebar-wrapper relative inline-flex h-svh w-[var(--sidebar-width)] shrink-0 flex-col border-r bg-sidebar text-sidebar-foreground md:sticky md:top-0 md:self-start"
+        className="glass-sidebar glass-panel-edge group/sidebar-wrapper relative inline-flex h-svh w-[var(--sidebar-width)] shrink-0 flex-col border-r text-sidebar-foreground md:sticky md:top-0 md:self-start"
         data-state={state}
         data-collapsible={collapsible}
         data-variant={variant}
@@ -252,7 +252,7 @@ const SidebarContent = React.forwardRef(({ className, ...props }, ref) => (
     ref={ref}
     data-sidebar="content"
     className={cn(
-      "flex min-h-0 flex-1 flex-col gap-4 overflow-y-auto bg-background p-4 group-data-[state=collapsed]/sidebar-wrapper:p-2",
+      "flex min-h-0 flex-1 flex-col gap-4 overflow-y-auto bg-transparent p-4 group-data-[state=collapsed]/sidebar-wrapper:p-2",
       className,
     )}
     {...props}
